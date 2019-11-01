@@ -43,30 +43,28 @@ let testCasesTwo: [(String, [Character: Int])] = [
     (input: "More words", expectedOutput: ["M": 1, "o": 2, "r": 2, "e": 1, " ": 1, "w": 1, "d": 1, "s": 1])
 ]
 
-// Having difficulty successfully unwrapping output[str] in else statement
 func frequencyDictionary(of: String) -> [Character: Int] {
     var output = [Character:Int]()
-    for str in of {
-        if output[str] == 0 {
-            output[str] = 1
+    for char in of {
+        if output[char] == nil {
+        output[char] = 1
         } else {
-            output[str]! += 1
-            
+            output[char]! += 1
         }
+        
     }
-    
     return output
-    
 }
+   
+    
+    
+var input = "hello"
+print(frequencyDictionary(of: input))
 
-
-
-
-
-//for (input, expectedOutput) in testCasesTwo {
-//    let output = frequencyDictionary(of: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+for (input, expectedOutput) in testCasesTwo {
+   let output = frequencyDictionary(of: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 
 // Question Three
