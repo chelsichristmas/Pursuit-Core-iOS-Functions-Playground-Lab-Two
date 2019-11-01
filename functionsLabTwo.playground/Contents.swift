@@ -2,7 +2,7 @@ import UIKit
 
 // Question One
 
-// Write a function named average(of:) that returns the average of an array of Doubles
+// Write a function named average(input:) that returns the average of an array of Doubles
 
 // Your function here
 
@@ -13,10 +13,23 @@ let testCasesOne: [([Double], Double)] = [
     (input: [1.5, 2.25, 4.5, -1.5], expectedOutput: 1.6875),
 ]
 
-//for (input, expectedOutput) in testCasesOne {
-//    let output = average(of: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+func average(input: [Double]) -> Double {
+    var average: Double = 0
+    var sum: Double = 0
+    var count = Double(input.count)
+    
+    for num in input {
+        sum += num
+        average = (sum / count)
+    }
+   
+    return average
+}
+
+for (input, expectedOutput) in testCasesOne {
+    let output = average(input: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 // Question Two
 
@@ -29,6 +42,26 @@ let testCasesTwo: [(String, [Character: Int])] = [
     (input: "aaaaaAAA", expectedOutput: ["a": 5, "A":3]),
     (input: "More words", expectedOutput: ["M": 1, "o": 2, "r": 2, "e": 1, " ": 1, "w": 1, "d": 1, "s": 1])
 ]
+
+// Having difficulty successfully unwrapping output[str] in else statement
+func frequencyDictionary(of: String) -> [Character: Int] {
+    var output = [Character:Int]()
+    for str in of {
+        if output[str] == 0 {
+            output[str] = 1
+        } else {
+            output[str]! += 1
+            
+        }
+    }
+    
+    return output
+    
+}
+
+
+
+
 
 //for (input, expectedOutput) in testCasesTwo {
 //    let output = frequencyDictionary(of: input)
